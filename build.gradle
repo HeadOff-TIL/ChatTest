@@ -18,6 +18,11 @@ repositories {
 dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-web'
     implementation 'org.springframework.boot:spring-boot-starter-websocket'
+    implementation 'org.springframework.kafka:spring-kafka'
+    implementation 'org.springframework.boot:spring-boot-starter-data-mongodb'
+    implementation 'org.projectlombok:lombok'
+    implementation group: 'com.google.guava', name: 'guava', version: '33.1.0-jre'
+
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
 }
 
