@@ -1,4 +1,4 @@
-package org.example.chattest.domain;
+package org.example.chattest.chatRoomUser;
 
 
 import lombok.*;
@@ -8,7 +8,6 @@ import org.springframework.data.mongodb.core.mapping.Document;
 @Document(collection = "chat_room_user")
 @Getter
 @ToString
-@Setter
 @AllArgsConstructor
 @Builder
 @NoArgsConstructor
