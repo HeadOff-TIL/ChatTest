@@ -3,7 +3,7 @@ package org.example.chattest.config;
 import com.google.common.collect.ImmutableMap;
 import org.apache.kafka.clients.consumer.ConsumerConfig;
 import org.apache.kafka.common.serialization.StringDeserializer;
-import org.example.chattest.domain.dto.Message;
+import org.example.chattest.chatMessage.Domain.ChatMessageDTO;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.kafka.annotation.EnableKafka;
@@ -19,16 +19,16 @@ import java.util.Map;
 public class ConsumerConfiguration {
     // KafkaListener 컨테이너 팩토리를 생성하는 Bean 메서드
     @Bean
-    public ConcurrentKafkaListenerContainerFactory<String, Message> kafkaListenerContainerFactory() {
-        ConcurrentKafkaListenerContainerFactory<String, Message> factory = new ConcurrentKafkaListenerContainerFactory<>();
+    public ConcurrentKafkaListenerContainerFactory<String, ChatMessageDTO> kafkaListenerContainerFactory() {
+        ConcurrentKafkaListenerContainerFactory<String, ChatMessageDTO> factory = new ConcurrentKafkaListenerContainerFactory<>();
         factory.setConsumerFactory(consumerFactory());
         return factory;
     }
 
     // Kafka ConsumerFactory를 생성하는 Bean 메서드
     @Bean
-    public ConsumerFactory<String, Message> consumerFactory() {
-        JsonDeserializer<Message> deserializer = new JsonDeserializer<>();
+    public ConsumerFactory<String, ChatMessageDTO> consumerFactory() {
+        JsonDeserializer<ChatMessageDTO> deserializer = new JsonDeserializer<>();
         // 패키지 신뢰 오류로 인해 모든 패키지를 신뢰하도록 작성
         deserializer.addTrustedPackages("*");
 
