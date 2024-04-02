@@ -1,4 +1,4 @@
-package org.example.chattest.domain;
+package org.example.chattest.chatRoom;
 
 
 import lombok.*;
@@ -8,8 +8,10 @@ import org.springframework.data.mongodb.core.mapping.Document;
 import java.time.LocalDateTime;
 
 @Document(collection = "chat_room")
-@Getter @ToString @Setter
-@AllArgsConstructor @Builder
+@Getter
+@ToString
+@AllArgsConstructor
+@Builder
 @NoArgsConstructor
 public class ChatRoom {
     @Id
