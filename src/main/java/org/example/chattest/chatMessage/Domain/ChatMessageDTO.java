@@ -1,7 +1,6 @@
-package org.example.chattest.domain.dto;
+package org.example.chattest.chatMessage.Domain;
 
 import lombok.*;
-import org.example.chattest.domain.ChatMessage;
 
 import java.io.Serializable;
 import java.time.Instant;
@@ -13,7 +12,7 @@ import java.time.ZoneId;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class Message implements Serializable {
+public class ChatMessageDTO implements Serializable {
 
     private String id;
     private Long chatRoomId;

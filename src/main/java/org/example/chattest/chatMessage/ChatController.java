@@ -1,7 +1,6 @@
-package org.example.chattest.controller;
+package org.example.chattest.chatMessage;
 
-import org.example.chattest.domain.ChatMessage;
-import org.example.chattest.domain.dto.Message;
+import org.example.chattest.chatMessage.Domain.ChatMessageDTO;
 import org.springframework.messaging.handler.annotation.MessageMapping;
 import org.springframework.messaging.handler.annotation.Payload;
 import org.springframework.messaging.handler.annotation.SendTo;
@@ -12,15 +11,16 @@ import org.springframework.stereotype.Controller;
 public class ChatController {
     @MessageMapping("/sendMessage")
     @SendTo("/topic/messages")
-    public Message sendMessage(@Payload Message message){
-        return message;
+    public ChatMessageDTO sendMessage(@Payload ChatMessageDTO chatMessageDTO){
+
+        return chatMessageDTO;
     }
 
     @MessageMapping("/newUser")
     @SendTo("/topic/messages")
-    public Message newUser(@Payload Message message, SimpMessageHeaderAccessor headerAccessor) {
+    public ChatMessageDTO newUser(@Payload ChatMessageDTO chatMessageDTO, SimpMessageHeaderAccessor headerAccessor) {
         // Add a user in the WebSocket session
-        headerAccessor.getSessionAttributes().put("username", message.getSenderName());
-        return message;
+        headerAccessor.getSessionAttributes().put("username", chatMessageDTO.getSenderName());
+        return chatMessageDTO;
     }
 }

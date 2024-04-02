@@ -1,4 +1,4 @@
-package org.example.chattest.domain;
+package org.example.chattest.chatMessage.Domain;
 
 
 import lombok.*;
