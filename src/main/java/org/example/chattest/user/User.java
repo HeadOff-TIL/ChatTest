@@ -1,4 +1,4 @@
-package org.example.chattest.domain;
+package org.example.chattest.user;
 
 import lombok.*;
 import org.apache.kafka.common.protocol.types.Field;
@@ -8,7 +8,6 @@ import org.springframework.data.mongodb.core.mapping.Document;
 @Document(collection = "user")
 @Getter
 @ToString
-@Setter
 @AllArgsConstructor
 @Builder
 @NoArgsConstructor
