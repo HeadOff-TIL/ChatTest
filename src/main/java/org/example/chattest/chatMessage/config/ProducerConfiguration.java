@@ -1,9 +1,9 @@
-package org.example.chattest.config;
+package org.example.chattest.chatMessage.config;
 
 import com.google.common.collect.ImmutableMap;
 import org.apache.kafka.clients.producer.ProducerConfig;
 import org.apache.kafka.common.serialization.StringSerializer;
-import org.example.chattest.chatMessage.Domain.ChatMessageDTO;
+import org.example.chattest.chatMessage.Domain.KafkaMessageDTO;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.kafka.annotation.EnableKafka;
@@ -19,7 +19,7 @@ import java.util.Map;
 public class ProducerConfiguration {
     // Kafka ProducerFactory를 생성하는 Bean 메서드
     @Bean
-    public ProducerFactory<String, ChatMessageDTO> producerFactory() {
+    public ProducerFactory<String, KafkaMessageDTO> producerFactory() {
         return new DefaultKafkaProducerFactory<>(producerConfigurations());
     }
 
@@ -27,15 +27,16 @@ public class ProducerConfiguration {
     @Bean
     public Map<String, Object> producerConfigurations() {
         return ImmutableMap.<String, Object>builder()
-                .put(ProducerConfig.BOOTSTRAP_SERVERS_CONFIG, "localhost:9092")
+                .put(ProducerConfig.BOOTSTRAP_SERVERS_CONFIG, KafkaConstants.KAFKA_BROKER)
                 .put(ProducerConfig.KEY_SERIALIZER_CLASS_CONFIG, StringSerializer.class)
                 .put(ProducerConfig.VALUE_SERIALIZER_CLASS_CONFIG, JsonSerializer.class)
+                .put("group_id", KafkaConstants.GROUP_ID)
                 .build();
     }
 
     // KafkaTemplate을 생성하는 Bean 메서드
     @Bean
-    public KafkaTemplate<String, ChatMessageDTO> kafkaTemplate() {
+    public KafkaTemplate<String, KafkaMessageDTO> kafkaTemplate() {
         return new KafkaTemplate<>(producerFactory());
     }
 }
