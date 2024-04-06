@@ -39,12 +39,4 @@ public class WebSocketConfiguration implements WebSocketMessageBrokerConfigurer 
         // stompHandler를 인터셉터로 등록하여 STOMP 메시지 핸들링을 수행
         registration.interceptors(stompHandler);
     }
-
-//    // STOMP에서 64KB 이상의 데이터 전송을 못하는 문제 해결
-//    @Override
-//    public void configureWebSocketTransport(WebSocketTransportRegistration registry) {
-//        registry.setMessageSizeLimit(160 * 64 * 1024);
-//        registry.setSendTimeLimit(100 * 10000);
-//        registry.setSendBufferSizeLimit(3 * 512 * 1024);
-//    }
 }
