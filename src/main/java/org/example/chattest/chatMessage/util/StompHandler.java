@@ -17,16 +17,20 @@ public class StompHandler implements ChannelInterceptor {
 
     @Override
     public Message<?> preSend(Message<?> message, MessageChannel channel) {
-        log.info("여기에서 중간에 인증인가 작업을 합니다");
+        //todo
+        // 1. 인증인가 작업
+        Message<?> message1 = ChannelInterceptor.super.preSend(message, channel);
         return ChannelInterceptor.super.preSend(message, channel);
     }
 
     @EventListener
     public void handleWebSocketConnectionListener(SessionConnectedEvent event){
+        //todo 세션 추가(redis)
         log.info("사용자 입장");
     }
     @EventListener
     public void handleWebSocketDisconnectionListener(SessionDisconnectEvent event){
+        //todo 세션 삭제(redis)
         log.info("사용자 퇴장");
     }
 }
