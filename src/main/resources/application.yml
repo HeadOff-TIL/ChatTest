@@ -1,6 +1,8 @@
 spring:
   application:
     name: ChatTest
+  redis:
+    host:
   kafka:
     producer:
       bootstrap-servers: localhost:9092
