@@ -15,9 +15,9 @@ public class ChatController {
     private final KafkaMessageService kafkaMessageService;
 
     @MessageMapping("/sendMessage")
-    public KafkaMessageDTO sendMessage(@Payload KafkaMessageDTO kafkaMessageDTO){
+    public void sendMessage(@Payload KafkaMessageDTO kafkaMessageDTO){
         kafkaMessageService.produceMessage(kafkaMessageDTO);
-        return kafkaMessageDTO;
+        //return kafkaMessageDTO;
     }
 
 //    @MessageMapping("/newUser")
